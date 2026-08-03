@@ -17,11 +17,11 @@ The layout below uses some terms and symbols unique to my thesis. Their definiti
   - `/pathway_comp`:        Pairwise comparisons of each method's $\alpha_{min}$/p-values.
   - `/pathway_size`:        Relationships between $\alpha_{min}$/p-values and pathway size for each method.
   - `/volcano`:             Comparison of each method's decision boundary. <hr>
-- `/notebooks`:             Files that explain how various figures/results were obtained.<br>To view a notebook, download the file to your computer and open it.<hr>
+- `/notebooks`:             Files that explain how various figures/results were obtained.<br>To view a notebook, download the file to your computer and open it locally.<hr>
   - `fdp_comp.nb.html`:     Comparison of the mean and median false discovery proportion on simulated data.
   - `pathway.nb.html`:      Performing a pathway analysis on example data.
   - `venn_diagram.nb.html`: Demonstration of how to plot a Venn diagram to compare enriched pathways between methods.
   - `volcano.nb.html`:      Demonstration of how to plot each method's decision boundary.
   - `functions.R`:          Implementations of algorithms, data generation, and helper functions for closed e-BH.
-  <br><b>Note</b>:          The decision boundary algorithm is not optimised and may run very slowly. <hr>
+  <br><b>Note</b>:          The decision boundary algorithm is not optimised and may run very slowly for large data sets. <hr>
 - `/output`:                Output files for all ten real data sets of pathway analyses performed on KEGG pathways.
