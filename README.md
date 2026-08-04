@@ -1,6 +1,6 @@
 # Simultaneous False Discovery Rate Methods for Genomics
 
-This repository contains the accompanying code for my master's thesis.
+This repository contains the supplementary material for my master's thesis.
 
 ## Terms and symbols
 
@@ -13,15 +13,19 @@ The layout below uses some terms and symbols unique to my thesis. Their definiti
 
 ## Layout
 
-- `/figures`:               Figures in Sections 5.2 and 5.3 for all ten real data sets. <hr>
-  - `/pathway_comp`:        Pairwise comparisons of each method's $\alpha_{min}$/p-values.
-  - `/pathway_size`:        Relationships between $\alpha_{min}$/p-values and pathway size for each method.
-  - `/volcano`:             Comparison of each method's decision boundary. <hr>
-- `/notebooks`:             Files that explain how various figures/results were obtained.<br>To view a notebook, download the file to your computer and open it locally.<hr>
+- `figures/`:               Figures in Sections 5.2 and 5.3 for all ten real data sets. <hr>
+  - `pathway_comp/`:        Pairwise comparisons of each method's $\alpha_{min}$/p-values.
+  - `pathway_size/`:        Relationships between $\alpha_{min}$/p-values and pathway size for each method.
+  - `volcano/`:             Comparison of each method's decision boundary. <hr>
+- `notebooks/`:             Files that explain how various figures/results were obtained.<br>To view a notebook, download the file to your computer and open it locally.<hr>
   - `fdp_comp.nb.html`:     Comparison of the mean and median false discovery proportion on simulated data.
   - `pathway.nb.html`:      Performing a pathway analysis on example data.
   - `venn_diagram.nb.html`: Demonstration of how to plot a Venn diagram to compare enriched pathways between methods.
   - `volcano.nb.html`:      Demonstration of how to plot each method's decision boundary.
-  - `functions.R`:          Implementations of algorithms, data generation, and helper functions for closed e-BH.
-  <br><b>Note</b>:          The decision boundary algorithm is not optimised and may run very slowly for large data sets. <hr>
-- `/output`:                Output files for all ten real data sets of pathway analyses performed on KEGG pathways.
+  - `functions.R`:          Implementations of algorithms, data generation tools, and helper functions for closed e-BH.
+  <br><b>Note</b>:          The decision boundary algorithm is not optimised and may run slowly for large data sets. <hr>
+- `output/`:                Output files for KEGG pathway analyses performed on all ten real data sets.
+
+## Data availability
+
+The real data sets referenced in the layout are not publicly available and are therefore not included in this repository. Nevertheless, the analyses of these data sets were performed in the same manner as shown in the notebooks `volcano.nb.html` and `pathway.nb.html`.
