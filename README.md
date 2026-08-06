@@ -8,14 +8,14 @@ The layout below uses some terms and symbols unique to my thesis. Their definiti
 
 | Term or symbol    | Meaning |
 | ----------------- | ------- |
-| $\alpha_{min}$    | The smallest significance level for which a closed method rejects a pathway (or any discovery set). |
+| $\alpha_{\textnormal{min}}$    | The smallest significance level for which a closed method rejects a pathway (or any discovery set). |
 | Decision boundary | A boundary based on volcano plot filters that determines which discovery sets belong to the set of valid discovery sets for a given method. |
 
 ## Layout
 
 - `figures/`:               Figures in Sections 5.2 and 5.3 for all ten real data sets. <hr>
-  - `pathway_comp/`:        Pairwise comparisons of each method's $\alpha_{min}$/p-values.
-  - `pathway_size/`:        Relationships between $\alpha_{min}$/p-values and pathway size for each method.
+  - `pathway_comp/`:        Pairwise comparisons of each method's $\alpha_{\textnormal{min}}$/p-values.
+  - `pathway_size/`:        Relationships between $\alpha_{\textnormal{min}}$/p-values and pathway size for each method.
   - `volcano/`:             Comparison of each method's decision boundary. <hr>
 - `notebooks/`:             Files that explain how various figures/results were obtained.<br>To view a notebook, download the file to your computer and open it locally.<hr>
   - `fdp_comp.nb.html`:     Comparison of the mean and median false discovery proportion on simulated data.
@@ -29,4 +29,4 @@ The layout below uses some terms and symbols unique to my thesis. Their definiti
 
 ## Data availability
 
-The real data sets referenced in the layout are not publicly available and are therefore not included in this repository. Nevertheless, the analyses of these data sets were performed in the same manner as shown in the notebooks `volcano.nb.html` and `pathway.nb.html`.
+The real data sets referenced in the layout are not publicly available and are therefore not included in this repository. However, the analyses of the real data sets were performed in the same manner as demonstrated in the notebooks `volcano.nb.html` and `pathway.nb.html`.
