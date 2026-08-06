@@ -175,12 +175,10 @@ test_result <- function(vals, set, method = c("closedeBH", "closedBY", "closedSu
     return(closedBY(vals,  set, alpha))
   } else if (method == "closedSu") {
     return(closedSu(vals,  set, alpha))
-  } else if (method == "medianTDP") {
-    return(setTDP(df$pvalue, featureIDs = df$gene_id, set = df$gene_id[set], alpha = 0.5)$TDP.bound >= 1 - alpha)
   }
 }
 
-find_min_alpha <- function(vals, set, method = c("closedeBH", "closedBY", "closedSu", "medianTDP")) {
+find_min_alpha <- function(vals, set, method = c("closedeBH", "closedBY", "closedSu")) {
   # Implementation of Algorithm 2
   lb  <- 0
   ub  <- 1
@@ -215,8 +213,8 @@ find_min_alpha <- function(vals, set, method = c("closedeBH", "closedBY", "close
   return((lb + ub) / 2)
 }
 
-# ---- Calculating power of mTDP ----
-mTDP_power <- function(df, alpha) {
+# ---- Calculating power of TDP methods ----
+TDP_power <- function(df, alpha) {
   # Implementation of Algorithm 3
   ord_by_p <- df$gene_id[order(df$pvalue)]
   
@@ -236,7 +234,7 @@ mTDP_power <- function(df, alpha) {
     lo
   }
   
-  find_max_k(0, n)
+  find_max_k(0, nrow(df))
 }
 
 # ---- Simulation scheme of equicorrelated data ----
@@ -251,27 +249,43 @@ simulate_data <- function(n, pi1, rho, signal, df) {
   
   X1 <- rnorm(n)
   X2 <- rnorm(n)
-  Z  <- rnorm(n)
+  Z1 <- rnorm(1)
+  Z2 <- rnorm(1)
   
   # Adds signal to non-null indices
   mu <- numeric(n)
   mu[non_null] <- signal
   
-  G1 <- a * X1 + b * Z
-  G2 <- a * X2 + b * Z + mu
+  G1 <- a * X1 + b * Z1
+  G2 <- a * X2 + b * Z2 + mu
   
   # Calculates p-values and fold changes
-  z <- (G2 - G1) / sqrt(2 * (1 - rho))
+  z <- (G2 - G1) / sqrt(2)
   pvals <- 2 * pnorm(-abs(z))
   
   sigma <- sqrt(df / rchisq(n, df = df))
   fold_change <- z * sigma
   
-  # Matches variable names with DESeq2
   data.frame(
     gene_id        = seq_len(n),
     log2FoldChange = fold_change,
     pvalue         = pvals,
     non_null       = (1:n %in% non_null)
   )
+}
+
+# ---- Simulation scheme of pathways ----
+simulate_pathways <- function(df, m, n, TDP) {
+  non_nulls <- which(df[["non_null"]])
+  nulls     <- which(!df[["non_null"]])
+  
+  k   <- floor(n * TDP)
+  out <- vector("list", m)
+  
+  for (i in seq_len(m)) {
+    samp_non <- sample(non_nulls, size = k, replace = FALSE)
+    samp_nil <- sample(nulls,     size = n - k, replace = FALSE)
+    out[[i]] <- c(samp_non, samp_nil)
+  }
+  out
 }
