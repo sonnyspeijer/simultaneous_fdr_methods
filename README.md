@@ -23,8 +23,7 @@ The layout below uses some terms and symbols unique to my thesis. Their definiti
   - `venn_diagram.nb.html`: Demonstration of how to plot a Venn diagram to compare enriched pathways between methods.
   - `volcano.nb.html`:      Demonstration of how to plot each method's decision boundary.
   - `example_data.csv`:     Example data for the pathway analysis.
-  - `functions.R`:          Implementations of algorithms, data generation tools, and helper functions for closed e-BH.
-  <br><b>Note</b>:          The decision boundary algorithm is not optimised and may run slowly for large data sets. <hr>
+  - `functions.R`:          Implementations of algorithms, data generation tools, and helper functions for closed e-BH.<hr>
 - `output/`:                Output files for KEGG pathway analyses performed on all ten real data sets.
 
 ## Data availability
